@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { Product } from './model/product';
 import { ProductService } from './services/product.service';
 import { CustomerService } from './services/customer.service';
@@ -9,17 +9,14 @@ import { CustomerService } from './services/customer.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'eshop';
 
   product: Product[];
 
-  constructor(private productService: ProductService, private customerService: CustomerService) {
+  constructor(private productService: ProductService, private customerService: CustomerService, @Inject('title') public title: string) {
     this.product = productService.getProducts();
     
   }
   
-  
-
   getTotal(): number {
     return this.customerService.getTotal();
   }

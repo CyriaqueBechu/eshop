@@ -14,7 +14,7 @@ import { ProductComponent } from './product/product.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [{ provide: 'title', useValue: 'Welcome to Zenika Ecommerce' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
