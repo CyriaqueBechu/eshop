@@ -1,14 +1,17 @@
 <!-- Extract to product component -->
-<div class="card h-100">
+<div class="card h-100" [ngClass]="{'red': data.stock == 1 }">
     <img [src]="data.photo"
          class="card-img-top"
          alt="">
     <div class="card-body">
-        <h3 class="card-title">{{data.title}} - {{data.price}}</h3>
+        <h3 class="card-title">{{data.title}} - {{data.price}}$</h3>
         <p class="card-text">{{data.description}}</p>
     </div>
     <div class="card-body">
         <button class="btn btn-primary" (click)="addToBasketFunction()">Add to basket</button>
+    </div>
+    <div class="stock">
+        <h6> Stock : {{data.stock}}</h6>
     </div>
 </div>
 <!-- End product component -->

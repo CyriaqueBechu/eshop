@@ -17,18 +17,11 @@
       </div>
   </div>
   <div class="row text-center">
-      <div class="col-md-3 col-sm-6 product-item">
-          <app-product [data]="product[0]" (addToBasket)="updateBasketPrice($event)"></app-product>
-      </div>
-      <div class="col-md-3 col-sm-6 product-item">
-        <app-product [data]="product[1]" (addToBasket)="updateBasketPrice($event)"></app-product>
-      </div>
-      <div class="col-md-3 col-sm-6 product-item">
-        <app-product [data]="product[2]" (addToBasket)="updateBasketPrice($event)"></app-product>
-      </div>
-      <div class="col-md-3 col-sm-6 product-item">
-        <app-product [data]="product[3]" (addToBasket)="updateBasketPrice($event)"></app-product>
-      </div>
+    <ng-container *ngFor="let p of product">
+    
+          <app-product *ngIf="p.stock > 0" class="col-md-3 col-sm-6 product-item" [data]="p" (addToBasket)="updatePrice($event)"></app-product>
+   
+    </ng-container>
   </div>
 
   <hr/>

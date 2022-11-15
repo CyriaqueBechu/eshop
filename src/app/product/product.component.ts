@@ -14,10 +14,10 @@ export class ProductComponent implements OnInit {
   data!: Product;
 
   @Output()
-  addToBasket = new EventEmitter<number>();
+  addToBasket = new EventEmitter<Product>();
 
   addToBasketFunction() {
-    this.addToBasket.emit(this.data.price);
+    this.addToBasket.emit(this.data);
   }
 
   ngOnInit(): void {
