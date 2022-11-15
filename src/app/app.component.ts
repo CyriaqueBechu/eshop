@@ -9,12 +9,28 @@ import { CustomerService } from './services/customer.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  products: Product[] = [];
 
-  product: Product[];
+  basket = this.customerService.basket;
 
   constructor(private productService: ProductService, private customerService: CustomerService, @Inject('title') public title: string) {
-    this.product = productService.getProducts();
-    
+  }
+
+  ngOnInit(): void {
+    this.getProducts()
+    this.getBasket()
+  }
+
+  getProducts() {
+    this.productService.getProducts().subscribe(
+      (products) => {
+        this.products = products.map((p) => new Product(p.title, p.description, p.photo, p.price, p.stock))
+      }
+    );
+  }
+
+  getBasket() {
+    this.customerService.getBasket().subscribe();
   }
   
   getTotal(): number {
@@ -22,8 +38,9 @@ export class AppComponent {
   }
 
   public updatePrice(p: Product) {
-    this.customerService.addProduct(p)
-    this.productService.decreaseStock(p)
+    this.customerService.addProduct(p).subscribe(
+        () => this.productService.decreaseStock(p)
+      );
   }
 
   isAvailable(p: Product) {
