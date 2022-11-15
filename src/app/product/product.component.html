@@ -1,5 +1,5 @@
 <!-- Extract to product component -->
-<div class="card h-100" [ngClass]="{'red': data.stock == 1 }">
+<div class="card h-100" [ngClass]="{'red': productService.isTheLast(data)}">
     <img [src]="data.photo"
          class="card-img-top"
          alt="">

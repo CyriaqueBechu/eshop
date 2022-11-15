@@ -5,7 +5,7 @@
 
   <header class="p-5 mb-4 bg-light rounded-3">
       <h1>Welcome to Zenika Ecommerces</h1>
-      <p>Your basket amounts to {{total}}€</p>
+      <p>Your basket amounts to {{getTotal()}}€</p>
       <p><a class="btn btn-primary btn-large">See my basket</a></p>
   </header>
 
@@ -19,7 +19,7 @@
   <div class="row text-center">
     <ng-container *ngFor="let p of product">
     
-          <app-product *ngIf="p.stock > 0" class="col-md-3 col-sm-6 product-item" [data]="p" (addToBasket)="updatePrice($event)"></app-product>
+          <app-product *ngIf="isAvailable(p)" class="col-md-3 col-sm-6 product-item" [data]="p" (addToBasket)="updatePrice($event)"></app-product>
    
     </ng-container>
   </div>
