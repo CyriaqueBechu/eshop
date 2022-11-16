@@ -1,1 +1,42 @@
 <pre><code>{{ basket | json }}</code></pre>
+
+<form (ngSubmit)="checkout()">
+  <div class="mb-3">
+    <label for="formControlBasket" class="form-label">Name</label>
+    <input
+      id="name"
+      class="form-control is-invalid"
+      class="form-control is-valid"
+      placeholder="name"
+      [(ngModel)]="customer.name"
+      name="name"
+      required
+    />
+    <!-- [ngClass]="{'form-control is-invalid': !customer.name.valid, 'form-control is-valid' : customer.name.valid }" -->
+
+    <label for="formControlBasket" class="form-label">Email address</label>
+    <input
+      id="adress"
+      class="form-control is-invalid"
+      class="form-control is-valid"
+      placeholder="name@example.com"
+      [(ngModel)]="customer.adress"
+      name="adress"
+      required
+    />
+
+    <label for="formControlBasket" class="form-label">Credit card</label>
+    <input
+      id="creditCard"
+      class="form-control is-invalid"
+      class="form-control is-valid"
+      placeholder="XXXX.XXXX"
+      [(ngModel)]="customer.creditCard"
+      name="creditCard"
+      required
+    />
+  </div>
+  <div class="col-12">
+    <button class="btn btn-primary" type="submit">Submit form</button>
+  </div>
+</form>

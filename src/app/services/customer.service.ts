@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, tap } from 'rxjs';
+import { Customer } from '../model/customer';
 import { Product } from '../model/product';
 
 @Injectable({
@@ -10,6 +11,7 @@ export class CustomerService {
   private url = 'http://localhost:8080/rest/basket';
 
   basket: Product[] = [];
+  customer!: Customer;
 
   constructor(private httpClient: HttpClient) {}
  
@@ -32,5 +34,9 @@ export class CustomerService {
       }),
       map((p) => undefined)
     );
+  }
+
+  checkout(customer: any) {
+    return this.httpClient.post(this.url + '/confirm', customer)
   }
 }
