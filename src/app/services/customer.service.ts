@@ -27,6 +27,7 @@ export class CustomerService {
   getBasket() {
     return this.httpClient.get<Product[]>(this.url).pipe(
       tap((products) => {
+        this.basket.length = 0;
         this.basket.push(...products);
       }),
       map((p) => undefined)

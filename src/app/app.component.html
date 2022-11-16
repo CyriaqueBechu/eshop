@@ -3,26 +3,7 @@
 <!-- Extract to app component -->
 <div class="container">
 
-  <header class="p-5 mb-4 bg-light rounded-3">
-      <h1>Welcome to Zenika Ecommerces</h1>
-      <p>Your basket amounts to {{getTotal() | currency: 'EUR'  }}</p>
-      <p><a class="btn btn-primary btn-large">See my basket</a></p>
-  </header>
-
-  <hr/>
-
-  <div class="row">
-      <div class="col-lg-12">
-          <h2>Last products</h2>
-      </div>
-  </div>
-  <div class="row text-center">
-    <ng-container *ngFor="let p of products">
-    
-          <app-product *ngIf="isAvailable(p)" class="col-md-3 col-sm-6 product-item" [data]="p" (addToBasket)="updatePrice($event)"></app-product>
-   
-    </ng-container>
-  </div>
+  <router-outlet></router-outlet>
 
   <hr/>
 

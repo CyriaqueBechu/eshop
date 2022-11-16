@@ -5,16 +5,22 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { ProductComponent } from './product/product.component';
+import { HomeComponent } from './home/home.component';
+import { BasketComponent } from './basket/basket.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
-    ProductComponent
+    ProductComponent,
+    HomeComponent,
+    BasketComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [{ provide: 'title', useValue: 'Welcome to Zenika Ecommerce' }],
   bootstrap: [AppComponent]
